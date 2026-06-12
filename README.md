@@ -1,89 +1,304 @@
-# Role-Based Candidate Screening System
+# AI-Powered Role-Based Candidate Screening System
 
-A complete AI/ML & Backend Intern assignment project.
+## Overview
 
-## What it does
+AI-Powered Role-Based Candidate Screening System is an intelligent interview automation platform designed to simulate structured technical interviews using Retrieval-Augmented Generation (RAG). The system dynamically generates interview questions based on the candidate's resume, selected job role, and a role-specific knowledge base, creating a personalized and context-aware screening experience.
 
-The system simulates a structured technical interview where questions are dynamically generated using:
+Unlike traditional questionnaire-based systems, this platform adapts interview topics according to the candidate's technical background, enabling more relevant and meaningful assessments.
 
-- Uploaded candidate resume
-- User-selected target role
-- Role-specific knowledge base
-- RAG-style retrieval from stored vectors
-- Candidate answer history
+---
 
-The role is **not hardcoded**. The user selects the target role from the UI.
+## Key Features
 
-## Tech Stack
+### Resume Intelligence
 
-### Frontend
-- React
-- Vite
-- Axios
+* PDF resume upload and processing
+* Candidate name extraction
+* Automated skill identification
+* Technology stack recognition
+* Resume-driven interview personalization
 
-### Backend
-- Python
-- FastAPI
-- SQLite
-- PyMuPDF
-- NumPy
-- Scikit-learn
+### Role-Based Screening
 
-### RAG / Vector Storage
-- Role-specific text corpus
-- Chunking strategy
-- Local embedding generation using hashed bag-of-words vectors
-- SQLite-based vector storage table
-- Cosine similarity retrieval
-- Retrieved context shown in UI for traceability
+* Dynamic role selection
+* Role-specific knowledge repositories
+* Context-aware evaluation strategy
+* Customized interview flow
 
-This avoids ChromaDB, TensorFlow, and Microsoft C++ Build Tools errors on Windows.
+### Retrieval-Augmented Generation (RAG)
 
-## Features
+* Knowledge base ingestion
+* Intelligent text chunking
+* Embedding generation
+* Vector storage and retrieval
+* Context-aware question generation
+* Retrieval traceability
 
-- Resume PDF upload
-- Role selection
-- Resume parsing
-- Candidate name extraction
-- Skills extraction
-- Knowledge base ingestion
-- Text chunking
-- Embedding generation
-- Vector storage in SQLite
-- Dynamic context retrieval
-- Question generation influenced by role, resume skills, and previous answers
-- Answer submission
-- Basic score and feedback
-- Final summary page
-- FastAPI Swagger docs
+### Interactive Interview Engine
 
-## Architecture
+* Dynamic question generation
+* Multi-stage interview workflow
+* Candidate response collection
+* Session continuity management
+* Context preservation across interview rounds
+
+### Evaluation & Analytics
+
+* Automated answer scoring
+* Feedback generation
+* Interview session tracking
+* Candidate performance summary
+* Historical interaction storage
+
+---
+
+## System Architecture
 
 ```text
-Frontend React UI
-    ↓
-FastAPI Backend
-    ↓
-Resume Parser → Skills + Candidate Name
-    ↓
-Role Selection
-    ↓
-RAG Pipeline
-    ↓
-Knowledge Base → Chunking → Embeddings → SQLite Vector Store
-    ↓
-Retrieve Relevant Context
-    ↓
-Generate Question
-    ↓
-Candidate Answer
-    ↓
-SQLite Storage
-    ↓
-Summary Page
+                           Candidate Resume
+                                   │
+                                   ▼
+                          Resume Processing
+                                   │
+                     ┌─────────────┴─────────────┐
+                     ▼                           ▼
+              Skill Extraction           Role Selection
+                     │                           │
+                     └─────────────┬─────────────┘
+                                   ▼
+                        Context Construction
+                                   │
+                                   ▼
+                        Retrieval-Augmented
+                          Generation (RAG)
+                                   │
+         ┌─────────────────────────┼─────────────────────────┐
+         ▼                         ▼                         ▼
+ Knowledge Base           Embedding Engine          Vector Storage
+                                   │
+                                   ▼
+                        Similarity-Based Retrieval
+                                   │
+                                   ▼
+                        Interview Question Generator
+                                   │
+                                   ▼
+                         Candidate Response
+                                   │
+                                   ▼
+                         Evaluation & Scoring
+                                   │
+                                   ▼
+                            Session Summary
 ```
 
-## Backend Setup
+---
+
+## Technology Stack
+
+### Frontend
+
+* React.js
+* Vite
+* Axios
+* CSS
+
+### Backend
+
+* FastAPI
+* Python
+* Pydantic
+* SQLite
+
+### AI/ML Components
+
+* Retrieval-Augmented Generation (RAG)
+* Text Chunking
+* Embedding Generation
+* Similarity Search
+* Resume Parsing
+* Skill Extraction
+
+### Database
+
+* SQLite
+* Vector Storage Layer
+* Session Persistence
+
+---
+
+## Retrieval-Augmented Generation Pipeline
+
+### Knowledge Ingestion
+
+Role-specific knowledge sources are processed and transformed into searchable chunks.
+
+### Chunking Strategy
+
+Documents are segmented into overlapping chunks to preserve contextual continuity while improving retrieval efficiency.
+
+### Embedding Generation
+
+Each chunk is converted into a vector representation using a lightweight embedding mechanism.
+
+### Vector Storage
+
+Generated embeddings and associated text chunks are stored in a dedicated vector storage layer within SQLite.
+
+### Retrieval Process
+
+Interview context is constructed dynamically using:
+
+* Selected job role
+* Extracted resume skills
+* Previous candidate responses
+
+Relevant knowledge chunks are retrieved using cosine similarity search.
+
+### Context-Aware Question Generation
+
+Retrieved content is used to generate role-specific interview questions tailored to the candidate's profile.
+
+---
+
+## Workflow
+
+### Step 1: Candidate Registration
+
+* Candidate uploads resume
+* Candidate selects target role
+
+### Step 2: Resume Analysis
+
+* Resume text extraction
+* Skill identification
+* Technology mapping
+
+### Step 3: Context Construction
+
+* Resume insights combined with selected role
+* Dynamic query generation
+
+### Step 4: Knowledge Retrieval
+
+* Similarity search over role-specific knowledge base
+* Retrieval of relevant content chunks
+
+### Step 5: Interview Generation
+
+* Context-aware technical questions generated
+* Questions aligned with candidate expertise
+
+### Step 6: Response Evaluation
+
+* Candidate answers recorded
+* Scores and feedback generated
+
+### Step 7: Summary Generation
+
+* Complete interview report
+* Performance insights
+* Session analytics
+
+---
+
+## API Endpoints
+
+| Method | Endpoint                | Description                            |
+| ------ | ----------------------- | -------------------------------------- |
+| GET    | `/roles`                | Retrieve available roles               |
+| POST   | `/upload-resume`        | Upload and parse candidate resume      |
+| POST   | `/generate-question`    | Generate contextual interview question |
+| POST   | `/submit-answer`        | Submit and evaluate answer             |
+| GET    | `/summary/{session_id}` | Retrieve interview summary             |
+
+---
+
+## Database Design
+
+### Sessions Table
+
+Stores:
+
+* Candidate information
+* Selected role
+* Resume content
+* Extracted skills
+* Session metadata
+
+### Interactions Table
+
+Stores:
+
+* Generated questions
+* Candidate answers
+* Scores
+* Feedback
+* Retrieved context
+
+### Vector Chunks Table
+
+Stores:
+
+* Knowledge chunks
+* Vector embeddings
+* Role mappings
+
+---
+
+## Design Decisions
+
+### FastAPI
+
+Selected for high performance, clean API design, asynchronous support, and automatic OpenAPI documentation.
+
+### React + Vite
+
+Chosen to provide a responsive user experience with rapid development and lightweight build tooling.
+
+### SQLite
+
+Used as a lightweight persistence layer requiring minimal setup while supporting structured data and vector storage.
+
+### Local Vector Database
+
+A custom vector retrieval layer was implemented within SQLite to eliminate external infrastructure dependencies while maintaining retrieval capabilities.
+
+### Explainable RAG
+
+Retrieved context is stored and exposed within the workflow to ensure transparency and traceability of generated interview questions.
+
+---
+
+## Project Structure
+
+```text
+project/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── rag.py
+│   │   ├── database.py
+│   │   ├── resume_parser.py
+│   │   └── question_generator.py
+│   │
+│   ├── data/
+│   └── requirements.txt
+│
+└── README.md
+```
+
+---
+
+## Setup Instructions
+
+### Backend
 
 ```bash
 cd backend
@@ -99,15 +314,13 @@ Backend URL:
 http://127.0.0.1:8000
 ```
 
-API Docs:
+API Documentation:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-## Frontend Setup
-
-Open a new terminal:
+### Frontend
 
 ```bash
 cd frontend
@@ -121,54 +334,23 @@ Frontend URL:
 http://localhost:5173
 ```
 
-## API Flow
+---
 
-1. `GET /roles`
-2. `POST /upload-resume`
-3. `POST /generate-question`
-4. `POST /submit-answer`
-5. `GET /summary/{session_id}`
+## Future Enhancements
 
-## Database Tables
+* LLM-powered answer evaluation
+* Advanced semantic embeddings
+* FAISS/ChromaDB integration
+* Multi-role interview pathways
+* Difficulty adaptation based on performance
+* Candidate ranking system
+* PDF interview report generation
+* Authentication and authorization
+* Administrative analytics dashboard
+* Cloud deployment support
 
-### sessions
-Stores candidate name, selected role, resume text, extracted skills, and timestamp.
+---
 
-### interactions
-Stores questions, answers, scores, feedback, retrieved context, and timestamp.
+## Conclusion
 
-### vector_chunks
-Stores role-specific knowledge chunks and generated vectors.
-
-## Demo Video Script
-
-1. Open frontend.
-2. Select role from dropdown.
-3. Upload resume PDF.
-4. Show extracted candidate name and skills.
-5. Click Generate Interview Question.
-6. Open retrieved context dropdown to show RAG traceability.
-7. Submit answer.
-8. Show score and feedback.
-9. Generate another question.
-10. Open final summary.
-11. Open FastAPI docs.
-12. Show project folder and SQLite database file.
-
-## Design Decisions
-
-- SQLite was used for persistence because it is lightweight and easy to run locally.
-- FastAPI was selected for clean API design and automatic Swagger documentation.
-- React/Vite was selected for a smooth frontend development experience.
-- Local vector storage was implemented in SQLite to avoid Windows installation errors caused by ChromaDB and TensorFlow dependencies.
-- Retrieved context is displayed in the UI to show traceability from knowledge base to question.
-
-## Future Improvements
-
-- Add Gemini/OpenAI-based question generation.
-- Add FAISS or ChromaDB in production environment.
-- Add login/authentication.
-- Add admin dashboard.
-- Add PDF report export.
-- Add stronger answer evaluation using an LLM.
-- Add more role-specific knowledge bases.
+This project demonstrates the integration of Artificial Intelligence, Retrieval-Augmented Generation, Backend Engineering, Frontend Development, and Database Design into a unified candidate screening platform. The system provides a scalable foundation for automated technical interviews while maintaining transparency, contextual relevance, and structured evaluation.
