@@ -1,0 +1,21 @@
+AI/ML Engineer Knowledge Base
+
+Machine learning is a subfield of artificial intelligence focused on algorithms that learn patterns from data. Supervised learning uses labeled data for classification and regression. Unsupervised learning discovers structure in unlabeled data using clustering, dimensionality reduction, and anomaly detection.
+
+Bias and variance are important sources of prediction error. High bias causes underfitting because the model is too simple. High variance causes overfitting because the model learns noise from the training data. Regularization, cross-validation, more data, feature selection, dropout, pruning, and early stopping can improve generalization.
+
+Model evaluation depends on the task. Classification metrics include accuracy, precision, recall, F1-score, ROC-AUC, PR-AUC, and confusion matrix. For imbalanced classification, accuracy can be misleading, so precision, recall, F1-score, PR-AUC, and class-specific metrics are often preferred.
+
+Regression metrics include MAE, MSE, RMSE, R2 score, and MAPE. MAE is robust and interpretable. RMSE penalizes large errors. R2 explains variance captured by the model.
+
+Feature engineering includes handling missing values, encoding categorical variables, scaling numerical values, detecting outliers, creating interaction features, extracting date/time features, and reducing dimensionality. Data leakage occurs when information unavailable at prediction time is used during training.
+
+Neural networks consist of layers of neurons trained using backpropagation and gradient descent. Activation functions such as ReLU, sigmoid, and tanh introduce non-linearity. Optimizers such as SGD, Adam, and RMSProp update weights to minimize loss.
+
+Deep learning is used for computer vision, NLP, speech, recommendation systems, and time-series forecasting. CNNs are effective for images because they learn spatial features. RNNs, LSTMs, GRUs, Transformers, and attention mechanisms are useful for sequence tasks.
+
+Transformers use self-attention to model relationships between tokens. They are widely used in large language models and modern NLP systems. Important concepts include tokenization, embeddings, attention scores, positional encoding, encoder-decoder architecture, fine-tuning, and prompt engineering.
+
+MLOps involves building reliable machine learning systems in production. Important topics include experiment tracking, model versioning, monitoring, drift detection, CI/CD, model serving APIs, logging, reproducibility, and retraining pipelines.
+
+Retrieval-Augmented Generation combines information retrieval with text generation. A knowledge base is chunked, embeddings are generated, vectors are stored, relevant chunks are retrieved for a query, and an LLM or generation system produces grounded responses using retrieved context.

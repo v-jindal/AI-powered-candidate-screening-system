@@ -1,0 +1,13 @@
+Backend Engineer Knowledge Base
+
+Backend engineering focuses on building server-side applications, APIs, databases, authentication, authorization, business logic, scalability, security, and deployment. REST APIs expose resources using HTTP methods such as GET, POST, PUT, PATCH, and DELETE.
+
+FastAPI, Flask, Django, Node.js, Express, Spring Boot, and Go are common backend technologies. API design requires request validation, error handling, pagination, rate limiting, structured responses, and documentation.
+
+Databases can be relational or non-relational. SQL databases use schemas, tables, joins, indexes, transactions, normalization, and ACID properties. NoSQL databases such as MongoDB, Redis, Cassandra, and DynamoDB are useful for flexible schemas, caching, high throughput, and distributed workloads.
+
+Authentication verifies identity, while authorization controls permissions. Common approaches include sessions, JWT, OAuth2, role-based access control, and API keys. Secure systems should hash passwords, use HTTPS, sanitize inputs, and prevent injection attacks.
+
+System design includes scalability, load balancing, caching, queues, microservices, monoliths, database sharding, replication, fault tolerance, and observability. Background tasks and message queues such as RabbitMQ, Kafka, and Celery improve asynchronous processing.
+
+Testing includes unit tests, integration tests, API tests, load tests, and end-to-end tests. Good backend projects use logging, monitoring, environment variables, modular architecture, dependency injection, and clear separation of concerns.
