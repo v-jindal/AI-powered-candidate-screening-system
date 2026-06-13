@@ -184,7 +184,3 @@ Questions are generated using retrieved context, extracted skills, selected role
 * Authentication and authorization
 * PDF interview reports
 * Cloud deployment
-
-## Author
-
-**Vanshika Jindal**
