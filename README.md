@@ -1,8 +1,6 @@
 # AI-Powered Candidate Screening System
 
-A role-based candidate screening platform that combines resume parsing, Retrieval-Augmented Generation (RAG), and dynamic interview generation to create personalized technical interviews.
-
-The system analyzes a candidate's resume, extracts technical skills, retrieves relevant knowledge from a role-specific knowledge base, and generates interview questions tailored to the candidate's profile.
+A role-based candidate screening platform that combines resume parsing, Retrieval-Augmented Generation (RAG), and dynamic interview generation to create personalized technical interviews.The system analyzes a candidate's resume, extracts technical skills, retrieves relevant knowledge from a role-specific knowledge base, and generates interview questions tailored to the candidate's profile.
 
 ## Features
 
